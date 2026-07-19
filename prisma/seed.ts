@@ -4,7 +4,7 @@ import bcrypt from "bcryptjs";
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log("Seeding database (SQLite)...");
+  console.log("Seeding database (PostgreSQL)...");
 
   // 1. Create admin user
   const adminPassword = bcrypt.hashSync("admin123", 10);
