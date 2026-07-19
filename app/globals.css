@@ -1,26 +1,84 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+@theme {
+  --color-luxury-bg: #F8F7F4;
+  --color-luxury-sec: #ECE8E2;
+  --color-luxury-accent: #A67C52;
+  --color-luxury-dark: #161616;
+  --color-luxury-white: #FFFFFF;
+  --color-luxury-body: #555555;
+  --color-luxury-heading: #111111;
+
+  --font-serif: var(--font-cormorant), Georgia, serif;
+  --font-sans: var(--font-inter), system-ui, sans-serif;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
+@layer base {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    background-color: var(--color-luxury-bg);
+    color: var(--color-luxury-body);
+    font-family: var(--font-sans);
+    scroll-behavior: auto; /* Lenis handles smooth scrolling */
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--color-luxury-heading);
+    font-family: var(--font-serif);
+  }
+
+  /* Custom Scrollbar for Lenis */
+  html.lenis, html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-smooth [data-lenis-prevent] {
+    overflow: clip;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  .lenis.lenis-scrolling iframe {
+    pointer-events: none;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: #F8F7F4;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #A67C52/30;
+    border-radius: 3px;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: #A67C52;
   }
 }
 
+/* Custom Text Reveal/Reveal Masks Animations utilities */
+.mask-reveal {
+  overflow: hidden;
+  position: relative;
+}
+
+.mask-reveal-inner {
+  display: block;
+}
+
+/* Lenis scroll container tweaks */
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }

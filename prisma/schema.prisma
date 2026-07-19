@@ -1,0 +1,135 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  ADMIN
+  EDITOR
+}
+
+model User {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  name      String?
+  password  String
+  role      Role     @default(EDITOR)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  blogs     Blog[]
+}
+
+model Project {
+  id           String      @id @default(uuid())
+  title        String
+  description  String
+  longDesc     String      @db.Text
+  category     String      // Residential, Commercial, Turnkey, Renovation
+  coverImage   String
+  images       String[]    // Gallery of project images
+  location     String
+  client       String
+  area         String      // e.g. "2,500 sq ft"
+  materials    String[]
+  duration     String      // e.g. "6 Months"
+  testimonial  String?     @db.Text
+  clientName   String?
+  clientRole   String?
+  isFeatured   Boolean     @default(false)
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+}
+
+model Service {
+  id           String   @id @default(uuid())
+  title        String
+  slug         String   @unique
+  description  String
+  longDesc     String   @db.Text
+  icon         String   // Lucide icon name
+  coverImage   String
+  gallery      String[]
+  processSteps String[] // Steps for this specific service
+  features     String[] // e.g. "Premium finishes", "Warranty"
+  createdAt    DateTime @default(now())
+  updatedAt    DateTime @updatedAt
+}
+
+model Blog {
+  id          String   @id @default(uuid())
+  title       String
+  slug        String   @unique
+  content     String   @db.Text
+  excerpt     String
+  coverImage  String
+  category    String
+  authorId    String
+  author      User     @relation(fields: [authorId], references: [id])
+  isPublished Boolean  @default(false)
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Testimonial {
+  id         String   @id @default(uuid())
+  name       String
+  role       String
+  company    String?
+  rating     Float    @default(5.0)
+  review     String   @db.Text
+  avatar     String?
+  videoUrl   String?  // Optional video testimonial url
+  isApproved Boolean  @default(true)
+  createdAt  DateTime @default(now())
+}
+
+model GalleryItem {
+  id          String   @id @default(uuid())
+  title       String
+  description String?
+  imageUrl    String
+  category    String   // Residential, Commercial, Exterior, Details
+  width       Int      @default(800)
+  height      Int      @default(600)
+  createdAt   DateTime @default(now())
+}
+
+model ContactMessage {
+  id        String   @id @default(uuid())
+  name      String
+  email     String
+  phone     String
+  subject   String?
+  message   String   @db.Text
+  isRead    Boolean  @default(false)
+  createdAt DateTime @default(now())
+}
+
+model NewsletterSubscriber {
+  id        String   @id @default(uuid())
+  email     String   @unique
+  createdAt DateTime @default(now())
+}
+
+model FAQ {
+  id        String   @id @default(uuid())
+  question  String
+  answer    String   @db.Text
+  category  String   // General, Residential, Billing, Process
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}
+
+model TeamMember {
+  id        String   @id @default(uuid())
+  name      String
+  role      String
+  bio       String   @db.Text
+  image     String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+}

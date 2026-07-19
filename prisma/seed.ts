@@ -1,0 +1,256 @@
+import { PrismaClient, Role } from "@prisma/client";
+import bcrypt from "bcryptjs";
+
+const prisma = new PrismaClient();
+
+async function main() {
+  console.log("Seeding database...");
+
+  // 1. Create admin user
+  const adminPassword = bcrypt.hashSync("admin123", 10);
+  const admin = await prisma.user.upsert({
+    where: { email: "admin@mainteriors.in" },
+    update: {},
+    create: {
+      email: "admin@mainteriors.in",
+      name: "M.A. Admin",
+      password: adminPassword,
+      role: Role.ADMIN,
+    },
+  });
+  console.log(`Admin user created: ${admin.email}`);
+
+  // 2. Create services
+  const services = [
+    {
+      title: "Residential Interior",
+      slug: "residential-interior",
+      description: "Bespoke, luxury home interiors crafted for sophisticated living.",
+      longDesc: "We design and execute custom residential interiors that combine visual grandeur with supreme functionality. From high-end villas to luxury apartments, our turnkey process handles layout planning, architectural lighting, material curation, custom furniture fabrication, and precise onsite installation.",
+      icon: "Home",
+      coverImage: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200",
+      gallery: [
+        "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=600",
+        "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?q=80&w=600",
+      ],
+      processSteps: ["Conceptual Design & Spacing", "3D Visualization & Finishes", "Execution & Fit-out"],
+      features: ["Turnkey Project Management", "5-Year Material Warranty", "Architectural Lighting Design"],
+    },
+    {
+      title: "Commercial Interior",
+      slug: "commercial-interior",
+      description: "Sophisticated brand environments and premium retail spaces.",
+      longDesc: "We build commercial environments that represent the identity of luxury brands and enterprises. Our team specializes in designing high-traffic showrooms, executive lounges, boutique hotels, and upscale dining environments that maximize spatial flow, acoustic performance, and functional elegance.",
+      icon: "Briefcase",
+      coverImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200",
+      gallery: [
+        "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600",
+        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=600",
+      ],
+      processSteps: ["Brand Spatial Strategy", "Ergonomic & Zoning Layouts", "High-End Fit-out & Technology"],
+      features: ["Compliant & Safe Materials", "Acoustic Insulation Integration", "Custom Millwork & Glass"],
+    },
+    {
+      title: "Office Design",
+      slug: "office-design",
+      description: "Modern, ergonomic workspace architecture to foster productivity.",
+      longDesc: "Transform your workspace into an inspiring hub of efficiency and creative focus. We combine ergonomic furnishings, acoustic optimization, and premium corporate branding to construct state-of-the-art office ecosystems that your team and clients will love.",
+      icon: "Monitor",
+      coverImage: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1200",
+      gallery: [
+        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=600",
+      ],
+      processSteps: ["Zoning & Layout Audits", "Ergonomic Furniture Specifying", "Structured Cabling & Lighting"],
+      features: ["Integrated Video Systems", "Custom Ergonomic Seating", "Modular Partitions"],
+    },
+    {
+      title: "Exterior Design",
+      slug: "exterior-design",
+      description: "Magnificent facade engineering and luxury outdoor spaces.",
+      longDesc: "A building's facade is its visual signature. We design and construct bespoke exterior surfaces using premium cladding, composite panelling, stone textures, and architectural lighting to elevate residential and commercial structures to international design standards.",
+      icon: "Layers",
+      coverImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200",
+      gallery: [
+        "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600",
+      ],
+      processSteps: ["Massing & Facade Drafting", "Premium Weatherproof Materials", "Lighting & Landscaping Integration"],
+      features: ["Weather-Resistant Cladding", "Facade Lighting Layouts", "Sustainable Design Engineering"],
+    },
+    {
+      title: "Renovation",
+      slug: "renovation",
+      description: "Complete structural retrofitting and modern interior remodelling.",
+      longDesc: "Breathing new life into vintage and outdated structures requires deep engineering knowledge. We offer complete turnkey renovation, stripping interiors down to the brickwork to reconstruct plumbing, electrical layout, and luxury spaces with zero compromises on safety.",
+      icon: "Hammer",
+      coverImage: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=1200",
+      gallery: [
+        "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=600",
+      ],
+      processSteps: ["Structural Audits & Demolition", "MEP Framework Rerouting", "Premium Surfaces & Finishes"],
+      features: ["Structural Soundness Guarantee", "Dustless Demolition Management", "Fixed Timelines & Cost Contracts"],
+    },
+  ];
+
+  for (const s of services) {
+    await prisma.service.upsert({
+      where: { slug: s.slug },
+      update: s,
+      create: s,
+    });
+  }
+  console.log("Services seeded successfully.");
+
+  // 3. Create projects
+  const projects = [
+    {
+      title: "The Royal Horizon Villa",
+      description: "A breathtaking residential villa overlooking the Arabian Sea, featuring handcrafted furniture and dynamic lighting systems.",
+      longDesc: "The Royal Horizon Villa is a testament to pure bespoke luxury. Built over an expansive 7,500 square feet in Mumbai's coastal stretch, this multi-generation home is designed to blur the boundaries between indoor comfort and outdoor vistas. Every piece of furniture was custom engineered at our proprietary workshop, using ethically sourced Italian oak, brushed gold brass details, and hand-woven silk fabrics. Architectural lighting runs on a smart DALI automation framework, shifts tone from cool morning daylight to warm twilight gold.",
+      category: "Residential",
+      coverImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200",
+      images: [
+        "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600",
+        "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600",
+        "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600",
+      ],
+      location: "Bandra West, Mumbai",
+      client: "Dr. Aditya Singhania",
+      area: "7,500 sq ft",
+      materials: ["Calacatta Gold Marble", "Brushed Brass Details", "Custom Walnut Millwork"],
+      duration: "8 Months",
+      testimonial: "M.A. Interiors transformed our dream of a sanctuary into a living reality. The attention to detail is spectacular, matching anything I've seen globally.",
+      clientName: "Dr. Aditya Singhania",
+      clientRole: "Senior Cardiologist",
+      isFeatured: true,
+    },
+    {
+      title: "Prestige Commercial Hub",
+      description: "An upscale corporate headquarters designed for collaborative workflow and premium brand presentation.",
+      longDesc: "Commissioned by a leading real estate conglomerate, the Prestige Commercial Hub is a 12,000 square foot modern office setup. The core design principles centered around transparency, sound attenuation, and micro-climate control. Using double-glazed acoustic glass partitions and custom acoustic felt ceiling panels, we achieved noise reduction index ratings suitable for private boardrooms. Elements of nature are woven throughout via automated green living walls and indoor water features.",
+      category: "Commercial",
+      coverImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200",
+      images: [
+        "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600",
+        "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=600",
+      ],
+      location: "Bandra Kurla Complex, Mumbai",
+      client: "Prestige Group India",
+      area: "12,000 sq ft",
+      materials: ["Acoustic Felt Cladding", "Terrazzo Flooring", "Anodized Aluminum"],
+      duration: "10 Months",
+      testimonial: "M.A. Interiors designed a state-of-the-art office that reflects our brand's forward-looking philosophy. Outstanding spatial management.",
+      clientName: "Rajesh Malhotra",
+      clientRole: "Managing Director",
+      isFeatured: true,
+    },
+    {
+      title: "Minimalist Loft Penthouse",
+      description: "A calm, neutral-toned penthouse featuring floating stairs and seamless cementitious finishes.",
+      longDesc: "Located in the heart of Mumbai, this penthouse layout embraces warm minimalism. Spacial volumes are optimized by utilizing floating concrete slabs for the central staircase and micro-cement coatings for floors and bathrooms. Storage is entirely integrated into flush wall panels to maintain clean, uninterrupted architectural lines.",
+      category: "Residential",
+      coverImage: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200",
+      images: [
+        "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=600",
+      ],
+      location: "Mira Road East, Maharashtra",
+      client: "Meera & Rohan Joshi",
+      area: "3,200 sq ft",
+      materials: ["Micro-cement Finish", "Smoked Oak Wood", "Linen Wallcoverings"],
+      duration: "5 Months",
+      testimonial: "We wanted a home that feels like a resort. M.A. Interiors delivered exactly that—a peaceful, clutter-free sanctuary.",
+      clientName: "Meera Joshi",
+      clientRole: "Fashion Designer",
+      isFeatured: false,
+    },
+  ];
+
+  for (const p of projects) {
+    await prisma.project.create({
+      data: p,
+    });
+  }
+  console.log("Projects seeded successfully.");
+
+  // 4. Create Testimonials
+  const testimonials = [
+    {
+      name: "Amit & Priya Sharma",
+      role: "Homeowners",
+      company: "The Crest Residences",
+      rating: 5,
+      review: "Working with M.A. Interiors & Exteriors was a seamless experience. From the initial 3D plans to the final delivery, their professionalism and eye for luxury finishes was unmatched. They transformed our standard apartment into an architectural magazine masterwork.",
+    },
+    {
+      name: "Vikram Singhal",
+      role: "CEO",
+      company: "Singhal Logistics",
+      rating: 5,
+      review: "Their turnkey office design capability is exceptional. The project was delivered on time, within budget, and has significantly boosted our workforce productivity. Highly recommended for commercial design.",
+    },
+  ];
+
+  for (const t of testimonials) {
+    await prisma.testimonial.create({
+      data: t,
+    });
+  }
+  console.log("Testimonials seeded successfully.");
+
+  // 5. Create FAQ
+  const faqs = [
+    {
+      question: "What is your typical project workflow?",
+      answer: "Our workflow is structured into 4 stages: (1) Initial briefing and layout drafting, (2) Detailed 3D rendering and material specification, (3) On-site masonry, MEP, and carpentry execution, and (4) Furniture styling and final turnkey handover.",
+      category: "Process",
+      order: 1,
+    },
+    {
+      question: "Do you offer turnkey execution services?",
+      answer: "Yes, we are a complete turnkey design studio. This means we handle everything from civil demolition, electrical planning, plumbing, false ceiling work, to custom carpentry, loose furniture fabrication, and site cleaning.",
+      category: "General",
+      order: 2,
+    },
+    {
+      question: "Do you offer a material warranty?",
+      answer: "Absolutely. We stand behind our craftsmanship. We offer a 5-year comprehensive warranty on all customized modular cabinetry, wardrobes, kitchen fittings, and engineered structural partitions.",
+      category: "Residential",
+      order: 3,
+    },
+  ];
+
+  for (const f of faqs) {
+    await prisma.fAQ.create({
+      data: f,
+    });
+  }
+  console.log("FAQs seeded successfully.");
+
+  // 6. Create Team Members
+  const team = [
+    {
+      name: "M.A. Qureshi",
+      role: "Founder & Creative Director",
+      bio: "With over 18 years of design experience across luxury residential and commercial properties, Qureshi leads the design direction and material engineering standards at M.A. Interiors & Exteriors.",
+      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400",
+      order: 1,
+    },
+  ];
+
+  for (const t of team) {
+    await prisma.teamMember.create({
+      data: t,
+    });
+  }
+  console.log("Team members seeded successfully.");
+
+  console.log("Database seeded successfully!");
+}
+
+main()
+  .catch((e) => {
+    console.error(e);
+    process.exit(1);
+  })
+  .finally(async () => {
+    await prisma.$disconnect();
+  });

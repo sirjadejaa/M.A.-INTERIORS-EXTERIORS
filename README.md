@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# M.A. Interiors & Exteriors - Luxury Design Studio Website
 
-## Getting Started
+This is a premium, production-ready website built with Next.js 15, React 19, TypeScript, Tailwind CSS, GSAP, and Prisma ORM for **M.A. Interiors & Exteriors**, located in Mira Road East, Maharashtra, India.
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+## 🌟 Architecture & Features
+
+1. **Luxury Editorial Design**: Handcrafted aesthetics inspired by Apple & Aesop, featuring large whitespace, typography-driven structures (`Cormorant Garamond` & `Inter`), and premium styling palettes.
+2. **Turnkey Metamorphosis Slider**: An interactive side-by-side Before/After slider to demonstrate on-site renovations and structural transformations.
+3. **Smooth Scroll Experience**: Global Lenis smooth-scrolling integration aligned with custom-spring cursor followers to ensure a premium desktop feel.
+4. **Three.js Particles Overlay**: Custom floating dust point elements generated natively on Canvas to add visual depth to the cinematic video hero.
+5. **Secure Administrative CMS**: Dynamic CRUD tables for portfolio projects, design services, journal entries, and a inbox message reader secured by Auth.js credentials.
+6. **Robust Server Actions**: Type-safe forms validated with Zod & React Hook Form, submitting inquiries to PostgreSQL database and triggering auto-reply acknowledgment emails via Nodemailer SMTP.
+
+---
+
+## 🛠️ Tech Stack & Key Libraries
+
+- **Frontend**: Next.js 15 (App Router), React 19, TypeScript, Tailwind CSS v4, Framer Motion
+- **Animations**: GSAP, ScrollTrigger, Lenis, React Three Fiber, Three.js
+- **Database & Auth**: Prisma ORM, PostgreSQL, NextAuth/Auth.js v5 (Beta)
+- **Communications & Services**: Cloudinary (Media uploads), Nodemailer (SMTP Alerts), Canvas Confetti (Inquiry animations)
+
+---
+
+## 🚀 Setup & Launch Checklist
+
+### 1. Configure Environment Variables
+Verify or edit `.env` variables located at the project root:
+```env
+DATABASE_URL="postgresql://postgres:postgres@localhost:5432/postgres?schema=public"
+NEXTAUTH_SECRET="8afb55f1fde1885f269cd9c766e4a29a07172551a3a41bc789b5c2c77174e92a"
+NEXTAUTH_URL="http://localhost:3000"
+SMTP_HOST="smtp.gmail.com"
+SMTP_PORT=587
+SMTP_USER="your-email@gmail.com"
+SMTP_PASS="your-app-password"
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+### 2. Run Database Container
+Launch the preconfigured PostgreSQL server:
+```bash
+docker-compose up -d
+```
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### 3. Generate Models & Seed Database
+Build the database tables and populate sample luxury projects/services:
+```bash
+npx prisma db push
+npx prisma db seed
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+*Note: Default seeded Admin credentials are:*
+- **Email**: `admin@mainteriors.in`
+- **Password**: `admin123`
 
-## Learn More
+### 4. Start Development Server
+```bash
+npm run dev
+```
+Open [http://localhost:3000](http://localhost:3000) in your browser.
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📁 Workspace Directory Map
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+- `/app` - Web pages and server APIs
+- `/components` - Common buttons, sliders, GSAP timelines, and canvas overlays
+- `/actions` - Server Actions handling contact notifications and dashboard operations
+- `/lib` - Database client, authentication configurations, and Nodemailer configs
+- `/types` - NextAuth type extensions
+- `/prisma` - Schemas, migrations, and seed files
+- `/public` - Royalty free architectural photography and video clips
