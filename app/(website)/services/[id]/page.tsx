@@ -126,6 +126,7 @@ export default async function ServiceDetailsPage({
     if (dbService) {
       service = {
         ...dbService,
+        features: typeof dbService.features === "string" ? JSON.parse(dbService.features) : dbService.features,
         process: mockServices.find((m) => m.slug === id)?.process || [],
       };
     }

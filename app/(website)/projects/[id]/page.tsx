@@ -107,6 +107,15 @@ export default async function ProjectDetailsPage({
   const beforeImage = project.beforeImage || "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=1200";
   const afterImage = project.coverImage || "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200";
 
+  // Convert SQLite string properties back to arrays if needed
+  const materialsList: string[] = typeof project.materials === "string"
+    ? (project.materials.startsWith("[") ? JSON.parse(project.materials) : project.materials.split(","))
+    : (project.materials || ["Bespoke Veneer Cladding", "Italian Stone Finishes", "Smart Home Automation"]);
+
+  const imagesList: string[] = typeof project.images === "string"
+    ? (project.images.startsWith("[") ? JSON.parse(project.images) : project.images.split(","))
+    : (project.images || []);
+
   return (
     <div className="bg-[#F8F7F4] pt-32 pb-24 md:pt-40 md:pb-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
@@ -198,7 +207,7 @@ export default async function ProjectDetailsPage({
           <div className="lg:col-span-4 bg-white p-8 rounded-lg border border-[#ECE8E2] h-max">
             <h3 className="font-serif text-lg text-[#111111] mb-4">Material Curation</h3>
             <ul className="flex flex-col gap-3 font-sans text-xs text-[#555555]">
-              {(project.materials || ["Bespoke Veneer Cladding", "Italian Stone Finishes", "Smart Home Automation"]).map((mat: string, idx: number) => (
+              {materialsList.map((mat: string, idx: number) => (
                 <li key={idx} className="flex items-center gap-2">
                   <span className="w-1.5 h-1.5 rounded-full bg-[#A67C52]" />
                   <span>{mat}</span>
@@ -224,13 +233,13 @@ export default async function ProjectDetailsPage({
         </div>
 
         {/* Image Gallery */}
-        {project.images && project.images.length > 0 && (
+        {imagesList && imagesList.length > 0 && (
           <div className="mb-24">
             <h3 className="font-serif text-3xl text-[#111111] mb-12 border-b border-[#ECE8E2] pb-4">
               Visual Chronicle
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              {project.images.map((img: string, idx: number) => (
+              {imagesList.map((img: string, idx: number) => (
                 <div key={idx} className="relative aspect-[4/3] rounded-lg overflow-hidden border border-[#ECE8E2]">
                   <Image
                     src={img}

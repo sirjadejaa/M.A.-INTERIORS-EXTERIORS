@@ -1,10 +1,10 @@
-import { PrismaClient, Role } from "@prisma/client";
+import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcryptjs";
 
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log("Seeding database...");
+  console.log("Seeding database (SQLite)...");
 
   // 1. Create admin user
   const adminPassword = bcrypt.hashSync("admin123", 10);
@@ -15,7 +15,7 @@ async function main() {
       email: "admin@mainteriors.in",
       name: "M.A. Admin",
       password: adminPassword,
-      role: Role.ADMIN,
+      role: "ADMIN",
     },
   });
   console.log(`Admin user created: ${admin.email}`);
@@ -29,12 +29,12 @@ async function main() {
       longDesc: "We design and execute custom residential interiors that combine visual grandeur with supreme functionality. From high-end villas to luxury apartments, our turnkey process handles layout planning, architectural lighting, material curation, custom furniture fabrication, and precise onsite installation.",
       icon: "Home",
       coverImage: "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=1200",
-      gallery: [
+      gallery: JSON.stringify([
         "https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?q=80&w=600",
         "https://images.unsplash.com/photo-1618219908412-a29a1bb7b86e?q=80&w=600",
-      ],
-      processSteps: ["Conceptual Design & Spacing", "3D Visualization & Finishes", "Execution & Fit-out"],
-      features: ["Turnkey Project Management", "5-Year Material Warranty", "Architectural Lighting Design"],
+      ]),
+      processSteps: JSON.stringify(["Conceptual Design & Spacing", "3D Visualization & Finishes", "Execution & Fit-out"]),
+      features: JSON.stringify(["Turnkey Project Management", "5-Year Material Warranty", "Architectural Lighting Design"]),
     },
     {
       title: "Commercial Interior",
@@ -43,12 +43,12 @@ async function main() {
       longDesc: "We build commercial environments that represent the identity of luxury brands and enterprises. Our team specializes in designing high-traffic showrooms, executive lounges, boutique hotels, and upscale dining environments that maximize spatial flow, acoustic performance, and functional elegance.",
       icon: "Briefcase",
       coverImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200",
-      gallery: [
+      gallery: JSON.stringify([
         "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600",
         "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=600",
-      ],
-      processSteps: ["Brand Spatial Strategy", "Ergonomic & Zoning Layouts", "High-End Fit-out & Technology"],
-      features: ["Compliant & Safe Materials", "Acoustic Insulation Integration", "Custom Millwork & Glass"],
+      ]),
+      processSteps: JSON.stringify(["Brand Spatial Strategy", "Ergonomic & Zoning Layouts", "High-End Fit-out & Technology"]),
+      features: JSON.stringify(["Compliant & Safe Materials", "Acoustic Insulation Integration", "Custom Millwork & Glass"]),
     },
     {
       title: "Office Design",
@@ -57,11 +57,11 @@ async function main() {
       longDesc: "Transform your workspace into an inspiring hub of efficiency and creative focus. We combine ergonomic furnishings, acoustic optimization, and premium corporate branding to construct state-of-the-art office ecosystems that your team and clients will love.",
       icon: "Monitor",
       coverImage: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=1200",
-      gallery: [
+      gallery: JSON.stringify([
         "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=600",
-      ],
-      processSteps: ["Zoning & Layout Audits", "Ergonomic Furniture Specifying", "Structured Cabling & Lighting"],
-      features: ["Integrated Video Systems", "Custom Ergonomic Seating", "Modular Partitions"],
+      ]),
+      processSteps: JSON.stringify(["Zoning & Layout Audits", "Ergonomic Furniture Specifying", "Structured Cabling & Lighting"]),
+      features: JSON.stringify(["Integrated Video Systems", "Custom Ergonomic Seating", "Modular Partitions"]),
     },
     {
       title: "Exterior Design",
@@ -70,11 +70,11 @@ async function main() {
       longDesc: "A building's facade is its visual signature. We design and construct bespoke exterior surfaces using premium cladding, composite panelling, stone textures, and architectural lighting to elevate residential and commercial structures to international design standards.",
       icon: "Layers",
       coverImage: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=1200",
-      gallery: [
+      gallery: JSON.stringify([
         "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?q=80&w=600",
-      ],
-      processSteps: ["Massing & Facade Drafting", "Premium Weatherproof Materials", "Lighting & Landscaping Integration"],
-      features: ["Weather-Resistant Cladding", "Facade Lighting Layouts", "Sustainable Design Engineering"],
+      ]),
+      processSteps: JSON.stringify(["Massing & Facade Drafting", "Premium Weatherproof Materials", "Lighting & Landscaping Integration"]),
+      features: JSON.stringify(["Weather-Resistant Cladding", "Facade Lighting Layouts", "Sustainable Design Engineering"]),
     },
     {
       title: "Renovation",
@@ -83,11 +83,11 @@ async function main() {
       longDesc: "Breathing new life into vintage and outdated structures requires deep engineering knowledge. We offer complete turnkey renovation, stripping interiors down to the brickwork to reconstruct plumbing, electrical layout, and luxury spaces with zero compromises on safety.",
       icon: "Hammer",
       coverImage: "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=1200",
-      gallery: [
+      gallery: JSON.stringify([
         "https://images.unsplash.com/photo-1581858726788-75bc0f6a952d?q=80&w=600",
-      ],
-      processSteps: ["Structural Audits & Demolition", "MEP Framework Rerouting", "Premium Surfaces & Finishes"],
-      features: ["Structural Soundness Guarantee", "Dustless Demolition Management", "Fixed Timelines & Cost Contracts"],
+      ]),
+      processSteps: JSON.stringify(["Structural Audits & Demolition", "MEP Framework Rerouting", "Premium Surfaces & Finishes"]),
+      features: JSON.stringify(["Structural Soundness Guarantee", "Dustless Demolition Management", "Fixed Timelines & Cost Contracts"]),
     },
   ];
 
@@ -105,18 +105,18 @@ async function main() {
     {
       title: "The Royal Horizon Villa",
       description: "A breathtaking residential villa overlooking the Arabian Sea, featuring handcrafted furniture and dynamic lighting systems.",
-      longDesc: "The Royal Horizon Villa is a testament to pure bespoke luxury. Built over an expansive 7,500 square feet in Mumbai's coastal stretch, this multi-generation home is designed to blur the boundaries between indoor comfort and outdoor vistas. Every piece of furniture was custom engineered at our proprietary workshop, using ethically sourced Italian oak, brushed gold brass details, and hand-woven silk fabrics. Architectural lighting runs on a smart DALI automation framework, shifts tone from cool morning daylight to warm twilight gold.",
+      longDesc: "The Royal Horizon Villa is a testament to pure bespoke luxury. Built over an expansive 7,500 square feet in Mumbai's coastal stretch, this multi-generation home is designed to blur the boundaries between indoor comfort and outdoor vistas. Every piece of furniture was custom engineered at our proprietary workshop, using ethically sourced Italian oak, brushed gold brass details, and hand-woven silk fabrics. Architectural lighting runs on a smart DALI automation framework, shifting tone from cool morning daylight to warm twilight gold.",
       category: "Residential",
       coverImage: "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=1200",
-      images: [
+      images: JSON.stringify([
         "https://images.unsplash.com/photo-1600585154340-be6161a56a0c?q=80&w=600",
         "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600",
         "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600",
-      ],
+      ]),
       location: "Bandra West, Mumbai",
       client: "Dr. Aditya Singhania",
       area: "7,500 sq ft",
-      materials: ["Calacatta Gold Marble", "Brushed Brass Details", "Custom Walnut Millwork"],
+      materials: JSON.stringify(["Calacatta Gold Marble", "Brushed Brass Details", "Custom Walnut Millwork"]),
       duration: "8 Months",
       testimonial: "M.A. Interiors transformed our dream of a sanctuary into a living reality. The attention to detail is spectacular, matching anything I've seen globally.",
       clientName: "Dr. Aditya Singhania",
@@ -129,14 +129,14 @@ async function main() {
       longDesc: "Commissioned by a leading real estate conglomerate, the Prestige Commercial Hub is a 12,000 square foot modern office setup. The core design principles centered around transparency, sound attenuation, and micro-climate control. Using double-glazed acoustic glass partitions and custom acoustic felt ceiling panels, we achieved noise reduction index ratings suitable for private boardrooms. Elements of nature are woven throughout via automated green living walls and indoor water features.",
       category: "Commercial",
       coverImage: "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=1200",
-      images: [
+      images: JSON.stringify([
         "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600",
         "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=600",
-      ],
+      ]),
       location: "Bandra Kurla Complex, Mumbai",
       client: "Prestige Group India",
       area: "12,000 sq ft",
-      materials: ["Acoustic Felt Cladding", "Terrazzo Flooring", "Anodized Aluminum"],
+      materials: JSON.stringify(["Acoustic Felt Cladding", "Terrazzo Flooring", "Anodized Aluminum"]),
       duration: "10 Months",
       testimonial: "M.A. Interiors designed a state-of-the-art office that reflects our brand's forward-looking philosophy. Outstanding spatial management.",
       clientName: "Rajesh Malhotra",
@@ -149,13 +149,13 @@ async function main() {
       longDesc: "Located in the heart of Mumbai, this penthouse layout embraces warm minimalism. Spacial volumes are optimized by utilizing floating concrete slabs for the central staircase and micro-cement coatings for floors and bathrooms. Storage is entirely integrated into flush wall panels to maintain clean, uninterrupted architectural lines.",
       category: "Residential",
       coverImage: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200",
-      images: [
+      images: JSON.stringify([
         "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=600",
-      ],
+      ]),
       location: "Mira Road East, Maharashtra",
       client: "Meera & Rohan Joshi",
       area: "3,200 sq ft",
-      materials: ["Micro-cement Finish", "Smoked Oak Wood", "Linen Wallcoverings"],
+      materials: JSON.stringify(["Micro-cement Finish", "Smoked Oak Wood", "Linen Wallcoverings"]),
       duration: "5 Months",
       testimonial: "We wanted a home that feels like a resort. M.A. Interiors delivered exactly that—a peaceful, clutter-free sanctuary.",
       clientName: "Meera Joshi",

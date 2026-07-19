@@ -1,5 +1,5 @@
 datasource db {
-  provider = "postgresql"
+  provider = "sqlite"
   url      = env("DATABASE_URL")
 }
 
@@ -7,17 +7,12 @@ generator client {
   provider = "prisma-client-js"
 }
 
-enum Role {
-  ADMIN
-  EDITOR
-}
-
 model User {
   id        String   @id @default(uuid())
   email     String   @unique
   name      String?
   password  String
-  role      Role     @default(EDITOR)
+  role      String   @default("EDITOR") // SQLite doesn't support enums natively, use String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
   blogs     Blog[]
@@ -27,16 +22,16 @@ model Project {
   id           String      @id @default(uuid())
   title        String
   description  String
-  longDesc     String      @db.Text
+  longDesc     String
   category     String      // Residential, Commercial, Turnkey, Renovation
   coverImage   String
-  images       String[]    // Gallery of project images
+  images       String      // SQLite doesn't support String[] arrays natively, store as JSON/string
   location     String
   client       String
   area         String      // e.g. "2,500 sq ft"
-  materials    String[]
+  materials    String      // Store as comma-separated string or JSON string
   duration     String      // e.g. "6 Months"
-  testimonial  String?     @db.Text
+  testimonial  String?
   clientName   String?
   clientRole   String?
   isFeatured   Boolean     @default(false)
@@ -49,12 +44,12 @@ model Service {
   title        String
   slug         String   @unique
   description  String
-  longDesc     String   @db.Text
+  longDesc     String
   icon         String   // Lucide icon name
   coverImage   String
-  gallery      String[]
-  processSteps String[] // Steps for this specific service
-  features     String[] // e.g. "Premium finishes", "Warranty"
+  gallery      String   // Store as JSON/comma-separated string
+  processSteps String   // Store as JSON/comma-separated string
+  features     String   // Store as JSON/comma-separated string
   createdAt    DateTime @default(now())
   updatedAt    DateTime @updatedAt
 }
@@ -63,7 +58,7 @@ model Blog {
   id          String   @id @default(uuid())
   title       String
   slug        String   @unique
-  content     String   @db.Text
+  content     String
   excerpt     String
   coverImage  String
   category    String
@@ -80,7 +75,7 @@ model Testimonial {
   role       String
   company    String?
   rating     Float    @default(5.0)
-  review     String   @db.Text
+  review     String
   avatar     String?
   videoUrl   String?  // Optional video testimonial url
   isApproved Boolean  @default(true)
@@ -104,7 +99,7 @@ model ContactMessage {
   email     String
   phone     String
   subject   String?
-  message   String   @db.Text
+  message   String
   isRead    Boolean  @default(false)
   createdAt DateTime @default(now())
 }
@@ -118,7 +113,7 @@ model NewsletterSubscriber {
 model FAQ {
   id        String   @id @default(uuid())
   question  String
-  answer    String   @db.Text
+  answer    String
   category  String   // General, Residential, Billing, Process
   order     Int      @default(0)
   createdAt DateTime @default(now())
@@ -128,7 +123,7 @@ model TeamMember {
   id        String   @id @default(uuid())
   name      String
   role      String
-  bio       String   @db.Text
+  bio       String
   image     String
   order     Int      @default(0)
   createdAt DateTime @default(now())
