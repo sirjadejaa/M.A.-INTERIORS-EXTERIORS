@@ -53,23 +53,23 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#161616] flex items-center justify-center px-6">
-      <div className="max-w-md w-full bg-[#222222] p-8 md:p-12 rounded-lg border border-white/5 shadow-2xl flex flex-col items-center">
+    <div className="min-h-screen bg-[#0A192F] flex items-center justify-center px-6">
+      <div className="max-w-md w-full bg-[#112240] p-8 md:p-12 rounded-lg border border-white/5 shadow-2xl flex flex-col items-center">
         
         {/* Logo */}
         <div className="text-center mb-8">
           <h1 className="font-serif text-3xl text-white tracking-[0.2em] uppercase font-light">
-            M.A.
+            Turk
           </h1>
-          <p className="font-sans text-[8px] text-[#A67C52] tracking-[0.4em] uppercase mt-2">
+          <p className="font-sans text-[8px] text-[#D4AF37] tracking-[0.4em] uppercase mt-2">
             Atelier Management CMS
           </p>
         </div>
 
         {/* Info Notification for Seeded Credentials */}
-        <div className="w-full bg-[#A67C52]/10 border border-[#A67C52]/20 p-4 rounded mb-6 text-center text-[10px] text-[#ECE8E2] font-sans tracking-wide">
+        <div className="w-full bg-[#D4AF37]/10 border border-[#D4AF37]/20 p-4 rounded mb-6 text-center text-[10px] text-[#E2E8F0] font-sans tracking-wide">
           Seeded Credentials:<br />
-          Email: <span className="font-semibold text-white">admin@mainteriors.in</span><br />
+          Email: <span className="font-semibold text-white">admin@turkinteriors.in</span><br />
           Password: <span className="font-semibold text-white">admin123</span>
         </div>
 
@@ -77,7 +77,7 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit(onSubmit)} className="w-full flex flex-col gap-6">
           {/* Email */}
           <div className="flex flex-col gap-1.5">
-            <label className="font-sans text-[9px] tracking-widest uppercase text-[#ECE8E2]/60 font-semibold">
+            <label className="font-sans text-[9px] tracking-widest uppercase text-[#E2E8F0]/60 font-semibold">
               Email Address
             </label>
             <div className="relative">
@@ -85,8 +85,8 @@ export default function LoginPage() {
               <input
                 type="email"
                 {...register("email")}
-                placeholder="e.g. admin@mainteriors.in"
-                className="w-full bg-white/5 border border-white/10 px-10 py-3 rounded text-xs font-sans text-white placeholder-white/20 focus:outline-none focus:border-[#A67C52] transition-colors"
+                placeholder="e.g. admin@turkinteriors.in"
+                className="w-full bg-white/5 border border-white/10 px-10 py-3 rounded text-xs font-sans text-white placeholder-white/20 focus:outline-none focus:border-[#D4AF37] transition-colors"
                 required
               />
             </div>
@@ -99,7 +99,7 @@ export default function LoginPage() {
 
           {/* Password */}
           <div className="flex flex-col gap-1.5">
-            <label className="font-sans text-[9px] tracking-widest uppercase text-[#ECE8E2]/60 font-semibold">
+            <label className="font-sans text-[9px] tracking-widest uppercase text-[#E2E8F0]/60 font-semibold">
               Passcode
             </label>
             <div className="relative">
@@ -108,7 +108,7 @@ export default function LoginPage() {
                 type="password"
                 {...register("password")}
                 placeholder="••••••••"
-                className="w-full bg-white/5 border border-white/10 px-10 py-3 rounded text-xs font-sans text-white placeholder-white/20 focus:outline-none focus:border-[#A67C52] transition-colors"
+                className="w-full bg-white/5 border border-white/10 px-10 py-3 rounded text-xs font-sans text-white placeholder-white/20 focus:outline-none focus:border-[#D4AF37] transition-colors"
                 required
               />
             </div>
@@ -129,7 +129,7 @@ export default function LoginPage() {
           <button
             type="submit"
             disabled={loading}
-            className="w-full py-4 mt-2 bg-[#A67C52] text-white hover:bg-[#A67C52]/90 transition-colors duration-300 font-sans text-[10px] font-bold uppercase tracking-widest rounded flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
+            className="w-full py-4 mt-2 bg-[#D4AF37] text-white hover:bg-[#D4AF37]/90 transition-colors duration-300 font-sans text-[10px] font-bold uppercase tracking-widest rounded flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {loading ? "Authenticating Session..." : "Secure Login"}
             <ArrowRight className="w-4 h-4" />

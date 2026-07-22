@@ -28,7 +28,7 @@ function ParticleCluster(props: any) {
       <Points ref={ref} positions={pointsArray} stride={3} frustumCulled {...props}>
         <PointMaterial
           transparent
-          color="#A67C52"
+          color="#D4AF37"
           size={0.005}
           sizeAttenuation={true}
           depthWrite={false}

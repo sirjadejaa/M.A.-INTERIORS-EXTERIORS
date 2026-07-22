@@ -54,7 +54,7 @@ export function BeforeAfterSlider({
   return (
     <div
       ref={containerRef}
-      className={`relative aspect-[16/9] w-full overflow-hidden select-none cursor-ew-resize rounded-lg border border-[#ECE8E2] ${className}`}
+      className={`relative aspect-[16/9] w-full overflow-hidden select-none cursor-ew-resize rounded-lg border border-[#E2E8F0] ${className}`}
       onMouseDown={() => setIsDragging(true)}
       onMouseUp={() => setIsDragging(false)}
       onMouseLeave={() => setIsDragging(false)}
@@ -92,7 +92,7 @@ export function BeforeAfterSlider({
             sizes="(max-width: 1200px) 100vw, 1200px"
             className="object-cover"
           />
-          <div className="absolute left-4 bottom-4 z-10 px-3 py-1 bg-[#A67C52]/90 backdrop-blur-md rounded text-white text-[10px] uppercase font-sans tracking-widest">
+          <div className="absolute left-4 bottom-4 z-10 px-3 py-1 bg-[#D4AF37]/90 backdrop-blur-md rounded text-white text-[10px] uppercase font-sans tracking-widest">
             {beforeLabel}
           </div>
         </div>
@@ -100,11 +100,11 @@ export function BeforeAfterSlider({
 
       {/* Slider Line handle */}
       <div
-        className="absolute top-0 bottom-0 w-[2px] bg-[#A67C52] z-20 cursor-ew-resize pointer-events-none"
+        className="absolute top-0 bottom-0 w-[2px] bg-[#D4AF37] z-20 cursor-ew-resize pointer-events-none"
         style={{ left: `${sliderPosition}%` }}
       >
         {/* Handle circle */}
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-[#161616] text-[#F8F7F4] border border-[#A67C52] rounded-full flex items-center justify-center shadow-lg font-sans text-xs">
+        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-8 h-8 bg-[#0A192F] text-[#F0F4F8] border border-[#D4AF37] rounded-full flex items-center justify-center shadow-lg font-sans text-xs">
           ↔
         </div>
       </div>

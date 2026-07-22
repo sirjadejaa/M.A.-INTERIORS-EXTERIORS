@@ -6,7 +6,7 @@ import { GSAPReveal } from "@/components/animations/gsap-reveal";
 import { ArrowRight, Home, Briefcase, Monitor, Layers, Hammer } from "lucide-react";
 
 export const metadata = {
-  title: "Specialized Services | M.A. Interiors & Exteriors",
+  title: "Specialized Services | Turk Interiors",
   description:
     "Explore our complete range of premium design services from Turnkey Residential build, Corporate Workspace, Facade Engineering to Custom Woodwork.",
 };
@@ -56,14 +56,14 @@ const serviceItems = [
 
 export default function ServicesPage() {
   return (
-    <div className="bg-[#F8F7F4] pt-32 pb-24 md:pt-40 md:pb-32">
+    <div className="bg-[#F0F4F8] pt-32 pb-24 md:pt-40 md:pb-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header Section */}
         <div className="mb-20">
-          <span className="font-sans text-[10px] text-[#A67C52] tracking-[0.4em] uppercase mb-4 block">
+          <span className="font-sans text-[10px] text-[#D4AF37] tracking-[0.4em] uppercase mb-4 block">
             Atelier Portfolio
           </span>
-          <MaskReveal className="font-serif text-4xl sm:text-6xl text-[#111111] leading-tight tracking-wide mb-8 max-w-3xl">
+          <MaskReveal className="font-serif text-4xl sm:text-6xl text-[#0B1B3D] leading-tight tracking-wide mb-8 max-w-3xl">
             Specialized Design Capabilities.
           </MaskReveal>
         </div>
@@ -81,10 +81,10 @@ export default function ServicesPage() {
                 delay={index * 0.1}
                 duration={0.8}
               >
-                <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border-b border-[#ECE8E2] pb-16 last:border-b-0`}>
+                <div className={`grid grid-cols-1 lg:grid-cols-12 gap-12 items-center border-b border-[#E2E8F0] pb-16 last:border-b-0`}>
                   {/* Image container */}
                   <div
-                    className={`lg:col-span-6 overflow-hidden rounded-lg border border-[#ECE8E2] relative aspect-[16/10] ${
+                    className={`lg:col-span-6 overflow-hidden rounded-lg border border-[#E2E8F0] relative aspect-[16/10] ${
                       isEven ? "lg:order-1" : "lg:order-2"
                     }`}
                   >
@@ -103,21 +103,21 @@ export default function ServicesPage() {
                       isEven ? "lg:order-2" : "lg:order-1"
                     }`}
                   >
-                    <div className="w-10 h-10 rounded-full bg-[#ECE8E2] text-[#A67C52] flex items-center justify-center mb-6">
+                    <div className="w-10 h-10 rounded-full bg-[#E2E8F0] text-[#D4AF37] flex items-center justify-center mb-6">
                       <Icon className="w-5 h-5" />
                     </div>
-                    <h3 className="font-serif text-2xl sm:text-3xl text-[#111111] mb-4">
+                    <h3 className="font-serif text-2xl sm:text-3xl text-[#0B1B3D] mb-4">
                       {service.title}
                     </h3>
-                    <p className="font-sans text-xs text-[#ECE8E2]/90 bg-[#A67C52] inline-block self-start px-3 py-1 uppercase tracking-widest mb-6 rounded-sm">
+                    <p className="font-sans text-xs text-[#E2E8F0]/90 bg-[#D4AF37] inline-block self-start px-3 py-1 uppercase tracking-widest mb-6 rounded-sm">
                       Turnkey Solution
                     </p>
-                    <p className="font-sans text-sm text-[#555555] leading-relaxed mb-8">
+                    <p className="font-sans text-sm text-[#475569] leading-relaxed mb-8">
                       {service.longDesc}
                     </p>
                     <Link
                       href={`/services/${service.slug}`}
-                      className="inline-flex items-center gap-3 font-sans text-[11px] uppercase tracking-widest text-[#111111] hover:text-[#A67C52] transition-colors group font-semibold"
+                      className="inline-flex items-center gap-3 font-sans text-[11px] uppercase tracking-widest text-[#0B1B3D] hover:text-[#D4AF37] transition-colors group font-semibold"
                     >
                       Examine Service Blueprint
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

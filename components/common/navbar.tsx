@@ -48,18 +48,18 @@ export function Navbar() {
         transition={{ duration: 0.6, ease: "easeOut" }}
         className={`fixed top-0 left-0 right-0 z-30 transition-all duration-300 ${
           scrolled
-            ? "bg-[#F8F7F4]/90 backdrop-blur-md border-b border-[#ECE8E2] py-4 shadow-sm"
+            ? "bg-[#F0F4F8]/90 backdrop-blur-md border-b border-[#E2E8F0] py-4 shadow-sm"
             : "bg-transparent py-6"
         }`}
       >
         <div className="max-w-7xl mx-auto px-6 md:px-12 flex justify-between items-center">
           {/* Logo */}
           <Link href="/" className="flex flex-col group z-50">
-            <span className="font-serif text-2xl md:text-3xl font-light tracking-[0.2em] text-[#161616] transition-colors group-hover:text-[#A67C52]">
-              M.A.
+            <span className="font-serif text-2xl md:text-3xl font-light tracking-[0.2em] text-[#0A192F] transition-colors group-hover:text-[#D4AF37]">
+              Turk
             </span>
-            <span className="font-sans text-[7px] md:text-[8px] tracking-[0.4em] text-[#555555] uppercase transition-colors group-hover:text-[#A67C52]">
-              Interiors & Exteriors
+            <span className="font-sans text-[7px] md:text-[8px] tracking-[0.4em] text-[#475569] uppercase transition-colors group-hover:text-[#D4AF37]">
+              Interiors
             </span>
           </Link>
 
@@ -71,13 +71,13 @@ export function Navbar() {
                 <Link
                   key={link.name}
                   href={link.href}
-                  className="font-sans text-[11px] tracking-[0.25em] text-[#555555] hover:text-[#A67C52] uppercase transition-colors relative py-1"
+                  className="font-sans text-[11px] tracking-[0.25em] text-[#475569] hover:text-[#D4AF37] uppercase transition-colors relative py-1"
                 >
                   {link.name}
                   {isActive && (
                     <motion.span
                       layoutId="activeNavIndicator"
-                      className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#A67C52]"
+                      className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#D4AF37]"
                       transition={{ type: "spring", stiffness: 380, damping: 30 }}
                     />
                   )}
@@ -86,10 +86,10 @@ export function Navbar() {
             })}
 
             {session?.user && (
-              <div className="flex items-center gap-4 border-l border-[#ECE8E2] pl-6">
+              <div className="flex items-center gap-4 border-l border-[#E2E8F0] pl-6">
                 <Link
                   href="/admin/dashboard"
-                  className="font-sans text-[11px] tracking-[0.25em] text-[#A67C52] uppercase hover:underline"
+                  className="font-sans text-[11px] tracking-[0.25em] text-[#D4AF37] uppercase hover:underline"
                 >
                   Dashboard
                 </Link>
@@ -107,14 +107,14 @@ export function Navbar() {
           <div className="flex items-center gap-4">
             <button
               onClick={() => setIsOpen(true)}
-              className="p-2 text-[#161616] hover:text-[#A67C52] transition-colors rounded-full border border-[#ECE8E2] hover:border-[#A67C52]/40"
+              className="p-2 text-[#0A192F] hover:text-[#D4AF37] transition-colors rounded-full border border-[#E2E8F0] hover:border-[#D4AF37]/40"
               aria-label="Toggle Mega Menu"
             >
               <Menu className="w-5 h-5" />
             </button>
             <Link
               href="/contact"
-              className="hidden sm:flex items-center justify-center gap-2 px-6 py-2.5 bg-[#161616] text-[#F8F7F4] hover:bg-[#A67C52] text-[10px] uppercase tracking-widest font-sans rounded transition-all group shadow-sm hover:shadow"
+              className="hidden sm:flex items-center justify-center gap-2 px-6 py-2.5 bg-[#0A192F] text-[#F0F4F8] hover:bg-[#D4AF37] text-[10px] uppercase tracking-widest font-sans rounded transition-all group shadow-sm hover:shadow"
             >
               Inquire Now
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

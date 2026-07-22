@@ -41,7 +41,7 @@ export default function AdminLayout({
 
   if (status === "loading") {
     return (
-      <div className="min-h-screen bg-[#161616] flex items-center justify-center text-[#ECE8E2] font-sans text-xs uppercase tracking-widest">
+      <div className="min-h-screen bg-[#0A192F] flex items-center justify-center text-[#E2E8F0] font-sans text-xs uppercase tracking-widest">
         Verifying Atelier Credentials...
       </div>
     );
@@ -50,16 +50,16 @@ export default function AdminLayout({
   if (!session) return null;
 
   return (
-    <div className="min-h-screen bg-[#F8F7F4] flex flex-col md:flex-row">
+    <div className="min-h-screen bg-[#F0F4F8] flex flex-col md:flex-row">
       {/* Sidebar Navigation */}
-      <aside className="w-full md:w-64 bg-[#161616] text-[#F8F7F4] flex flex-col justify-between p-6 border-r border-[#ECE8E2]/10 md:sticky md:top-0 md:h-screen">
+      <aside className="w-full md:w-64 bg-[#0A192F] text-[#F0F4F8] flex flex-col justify-between p-6 border-r border-[#E2E8F0]/10 md:sticky md:top-0 md:h-screen">
         <div className="flex flex-col">
           {/* Logo */}
           <div className="pb-8 mb-8 border-b border-white/5 text-center md:text-left">
             <h1 className="font-serif text-2xl text-white tracking-[0.2em] uppercase font-light">
-              M.A.
+              Turk
             </h1>
-            <span className="font-sans text-[7px] text-[#A67C52] tracking-[0.4em] uppercase block mt-1">
+            <span className="font-sans text-[7px] text-[#D4AF37] tracking-[0.4em] uppercase block mt-1">
               Management Portal
             </span>
           </div>
@@ -75,8 +75,8 @@ export default function AdminLayout({
                   href={item.href}
                   className={`flex items-center gap-3 px-4 py-3 rounded-md transition-colors ${
                     isActive
-                      ? "bg-[#A67C52] text-white"
-                      : "text-[#ECE8E2]/80 hover:bg-white/5 hover:text-white"
+                      ? "bg-[#D4AF37] text-white"
+                      : "text-[#E2E8F0]/80 hover:bg-white/5 hover:text-white"
                   }`}
                 >
                   <Icon className="w-4 h-4" />
@@ -93,7 +93,7 @@ export default function AdminLayout({
             <span className="font-sans text-[10px] text-white font-semibold tracking-wide">
               {session.user?.name || "Admin User"}
             </span>
-            <span className="font-sans text-[8px] text-[#A67C52] uppercase tracking-wider mt-0.5">
+            <span className="font-sans text-[8px] text-[#D4AF37] uppercase tracking-wider mt-0.5">
               {session.user?.role || "Editor"} Account
             </span>
           </div>

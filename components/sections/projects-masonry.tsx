@@ -50,35 +50,35 @@ export function ProjectsMasonry() {
       : initialProjects.filter((p) => p.category === filter);
 
   return (
-    <section className="py-24 md:py-32 bg-[#F8F7F4] relative overflow-hidden">
+    <section className="py-24 md:py-32 bg-[#F0F4F8] relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         
         {/* Header and Filter */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-8">
           <div>
-            <span className="font-sans text-[10px] text-[#A67C52] tracking-[0.4em] uppercase mb-4 block">
+            <span className="font-sans text-[10px] text-[#D4AF37] tracking-[0.4em] uppercase mb-4 block">
               Recent Portfolios
             </span>
-            <h2 className="font-serif text-3xl sm:text-5xl text-[#111111] tracking-wide">
+            <h2 className="font-serif text-3xl sm:text-5xl text-[#0B1B3D] tracking-wide">
               Selected Creations
             </h2>
           </div>
 
           {/* Luxury Tab Filters */}
-          <div className="flex items-center gap-6 border-b border-[#ECE8E2] pb-2 font-sans text-xs">
+          <div className="flex items-center gap-6 border-b border-[#E2E8F0] pb-2 font-sans text-xs">
             {categories.map((cat) => (
               <button
                 key={cat}
                 onClick={() => setFilter(cat)}
                 className={`relative pb-2 uppercase tracking-widest transition-colors font-medium text-[10px] ${
-                  filter === cat ? "text-[#A67C52]" : "text-[#555555] hover:text-[#111111]"
+                  filter === cat ? "text-[#D4AF37]" : "text-[#475569] hover:text-[#0B1B3D]"
                 }`}
               >
                 {cat}
                 {filter === cat && (
                   <motion.span
                     layoutId="projectFilterUnderline"
-                    className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#A67C52]"
+                    className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#D4AF37]"
                     transition={{ type: "spring", stiffness: 380, damping: 30 }}
                   />
                 )}
@@ -101,7 +101,7 @@ export function ProjectsMasonry() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="group relative flex flex-col overflow-hidden rounded-lg border border-[#ECE8E2] bg-[#F8F7F4] shadow-sm hover:shadow-xl transition-all duration-300"
+                className="group relative flex flex-col overflow-hidden rounded-lg border border-[#E2E8F0] bg-[#F0F4F8] shadow-sm hover:shadow-xl transition-all duration-300"
               >
                 <Link href={`/projects/${project.id}`} data-cursor-text="Examine">
                   {/* Image container */}
@@ -113,15 +113,15 @@ export function ProjectsMasonry() {
                       sizes="(max-width: 600px) 100vw, 600px"
                       className="object-cover group-hover:scale-105 transition-transform duration-700"
                     />
-                    <div className="absolute inset-0 bg-[#161616]/10 group-hover:bg-[#161616]/30 transition-colors duration-500" />
+                    <div className="absolute inset-0 bg-[#0A192F]/10 group-hover:bg-[#0A192F]/30 transition-colors duration-500" />
                   </div>
 
                   {/* Metadata overlay or card body */}
                   <div className="p-8">
-                    <span className="font-sans text-[8px] text-[#A67C52] tracking-widest uppercase block mb-2">
+                    <span className="font-sans text-[8px] text-[#D4AF37] tracking-widest uppercase block mb-2">
                       {project.category} • {project.location}
                     </span>
-                    <h3 className="font-serif text-lg text-[#111111] group-hover:text-[#A67C52] transition-colors tracking-wide leading-snug">
+                    <h3 className="font-serif text-lg text-[#0B1B3D] group-hover:text-[#D4AF37] transition-colors tracking-wide leading-snug">
                       {project.title}
                     </h3>
                   </div>
@@ -135,7 +135,7 @@ export function ProjectsMasonry() {
         <div className="flex justify-center mt-16">
           <Link
             href="/projects"
-            className="flex items-center gap-3 px-8 py-4 bg-[#161616] text-[#F8F7F4] hover:bg-[#A67C52] text-[10px] uppercase tracking-widest font-sans rounded transition-all group"
+            className="flex items-center gap-3 px-8 py-4 bg-[#0A192F] text-[#F0F4F8] hover:bg-[#D4AF37] text-[10px] uppercase tracking-widest font-sans rounded transition-all group"
           >
             All Collections
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />

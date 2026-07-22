@@ -23,7 +23,7 @@ const mockBlogs = [
     coverImage: "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200",
     date: "July 12, 2026",
     category: "Design Philosophy",
-    authorName: "M.A. Qureshi",
+    authorName: "Turk Team",
   },
   {
     slug: "architectural-lighting-indices",
@@ -42,7 +42,7 @@ const mockBlogs = [
     coverImage: "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=1200",
     date: "June 28, 2026",
     category: "Lighting Guide",
-    authorName: "M.A. Qureshi",
+    authorName: "Turk Team",
   },
 ];
 
@@ -83,36 +83,36 @@ export default async function BlogDetailsPage({
   }
 
   return (
-    <div className="bg-[#F8F7F4] pt-32 pb-24 md:pt-40 md:pb-32">
+    <div className="bg-[#F0F4F8] pt-32 pb-24 md:pt-40 md:pb-32">
       <div className="max-w-4xl mx-auto px-6">
         {/* Back Link */}
         <Link
           href="/blog"
-          className="font-sans text-[10px] uppercase tracking-widest text-[#A67C52] hover:underline mb-8 inline-flex items-center gap-1"
+          className="font-sans text-[10px] uppercase tracking-widest text-[#D4AF37] hover:underline mb-8 inline-flex items-center gap-1"
         >
           <ArrowLeft className="w-3.5 h-3.5" /> Back to Journal
         </Link>
 
         {/* Category & Date */}
-        <div className="flex items-center gap-4 text-[#555555]/60 text-[9px] uppercase tracking-widest font-sans mb-4">
-          <span className="text-[#A67C52] font-semibold">{blog.category}</span>
+        <div className="flex items-center gap-4 text-[#475569]/60 text-[9px] uppercase tracking-widest font-sans mb-4">
+          <span className="text-[#D4AF37] font-semibold">{blog.category}</span>
           <span className="flex items-center gap-1">
             <Calendar className="w-3 h-3" />
             {blog.date || new Date(blog.createdAt).toLocaleDateString()}
           </span>
           <span className="flex items-center gap-1">
             <User className="w-3 h-3" />
-            By {blog.author?.name || "M.A. Atelier"}
+            By {blog.author?.name || "Turk Interiors"}
           </span>
         </div>
 
         {/* Title */}
-        <h1 className="font-serif text-3xl sm:text-5xl text-[#111111] leading-tight tracking-wide mb-8">
+        <h1 className="font-serif text-3xl sm:text-5xl text-[#0B1B3D] leading-tight tracking-wide mb-8">
           {blog.title}
         </h1>
 
         {/* Large Cover Image */}
-        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-[#ECE8E2] mb-12 shadow-sm">
+        <div className="relative aspect-[16/9] w-full overflow-hidden rounded-lg border border-[#E2E8F0] mb-12 shadow-sm">
           <Image
             src={blog.coverImage || "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=1200"}
             alt={blog.title}
@@ -124,11 +124,11 @@ export default async function BlogDetailsPage({
         </div>
 
         {/* Article Content */}
-        <div className="prose prose-stone max-w-none text-[#555555] font-sans text-sm leading-relaxed space-y-6">
+        <div className="prose prose-stone max-w-none text-[#475569] font-sans text-sm leading-relaxed space-y-6">
           {blog.content.split("\n\n").map((para: string, idx: number) => {
             if (para.startsWith("###")) {
               return (
-                <h3 key={idx} className="font-serif text-xl sm:text-2xl text-[#111111] pt-6 pb-2">
+                <h3 key={idx} className="font-serif text-xl sm:text-2xl text-[#0B1B3D] pt-6 pb-2">
                   {para.replace("###", "").trim()}
                 </h3>
               );

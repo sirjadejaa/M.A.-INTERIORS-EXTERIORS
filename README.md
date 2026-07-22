@@ -1,6 +1,6 @@
-# M.A. Interiors & Exteriors - Luxury Design Studio Website
+# Turk Interiors - Luxury Design Studio Website
 
-This is a premium, production-ready website built with Next.js 15, React 19, TypeScript, Tailwind CSS, GSAP, and Prisma ORM for **M.A. Interiors & Exteriors**, located in Mira Road East, Maharashtra, India.
+This is a premium, production-ready website built with Next.js 15, React 19, TypeScript, Tailwind CSS, GSAP, and Prisma ORM for **Turk Interiors**, located in Pune, Maharashtra, India.
 
 ---
 
@@ -52,7 +52,7 @@ npx prisma db seed
 ```
 
 *Note: Default seeded Admin credentials are:*
-- **Email**: `admin@mainteriors.in`
+- **Email**: `admin@turkinteriors.in`
 - **Password**: `admin123`
 
 ### 4. Start Development Server

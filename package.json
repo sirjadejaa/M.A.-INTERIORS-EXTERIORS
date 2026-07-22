@@ -1,5 +1,5 @@
 {
-  "name": "ma-interiors-exteriors",
+  "name": "turk-interiors",
   "version": "1.0.0",
   "private": true,
   "prisma": {
@@ -9,7 +9,8 @@
     "dev": "next dev",
     "build": "prisma generate && next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "postinstall": "prisma generate"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.4.0",

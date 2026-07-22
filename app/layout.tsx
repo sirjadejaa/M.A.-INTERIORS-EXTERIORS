@@ -21,19 +21,19 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "M.A. Interiors & Exteriors | Luxury Design Studio in Mumbai",
+  title: "Turk Interiors | Premium Interior Designers in Pune",
   description:
-    "Bespoke, luxury interior and exterior design services in Mira Road East, Maharashtra, India. Turnkey residential and commercial design built to international standards.",
+    "Turk Interiors provides premium gypsum false ceilings, LED profile lighting, turnkey renovations, residential interiors, and commercial interior design services across Pune.",
   metadataBase: new URL("http://localhost:3000"),
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    title: "M.A. Interiors & Exteriors | Luxury Design Studio",
+    title: "Turk Interiors | Premium Interior Designers in Pune",
     description:
-      "Bespoke residential and commercial interior and exterior turnkey projects in Mumbai and Maharashtra.",
+      "Turk Interiors provides premium gypsum false ceilings, LED profile lighting, turnkey renovations, residential interiors, and commercial interior design services across Pune.",
     url: "/",
-    siteName: "M.A. Interiors & Exteriors",
+    siteName: "Turk Interiors",
     locale: "en_IN",
     type: "website",
   },
@@ -49,7 +49,7 @@ export default function RootLayout({
       lang="en"
       className={`${cormorant.variable} ${inter.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col bg-[#F8F7F4] selection:bg-[#A67C52] selection:text-white">
+      <body className="min-h-full flex flex-col bg-[#F0F4F8] selection:bg-[#D4AF37] selection:text-white">
         <Providers>
           <CustomLoader />
           <CustomCursor />

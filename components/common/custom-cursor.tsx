@@ -10,7 +10,7 @@ export function CustomCursor() {
   return (
     <div className="pointer-events-none fixed inset-0 z-50 overflow-hidden hidden md:block">
       <motion.div
-        className="flex items-center justify-center rounded-full bg-[#A67C52]/20 border border-[#A67C52] text-white text-[10px] font-sans font-medium tracking-widest uppercase mix-blend-difference"
+        className="flex items-center justify-center rounded-full bg-[#D4AF37]/20 border border-[#D4AF37] text-white text-[10px] font-sans font-medium tracking-widest uppercase mix-blend-difference"
         animate={{
           x: position.x - (hovered ? 24 : 8),
           y: position.y - (hovered ? 24 : 8),

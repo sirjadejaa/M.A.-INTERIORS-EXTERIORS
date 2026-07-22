@@ -143,12 +143,12 @@ export default async function ServiceDetailsPage({
   }
 
   return (
-    <div className="bg-[#F8F7F4] pt-32 pb-24 md:pt-40 md:pb-32">
+    <div className="bg-[#F0F4F8] pt-32 pb-24 md:pt-40 md:pb-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Breadcrumb link */}
         <Link
           href="/services"
-          className="font-sans text-[10px] uppercase tracking-widest text-[#A67C52] hover:underline mb-8 inline-block"
+          className="font-sans text-[10px] uppercase tracking-widest text-[#D4AF37] hover:underline mb-8 inline-block"
         >
           ← Back to services
         </Link>
@@ -156,17 +156,17 @@ export default async function ServiceDetailsPage({
         {/* Title Header */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-16 items-start">
           <div className="lg:col-span-8">
-            <h1 className="font-serif text-4xl sm:text-6xl text-[#111111] leading-tight tracking-wide mb-6">
+            <h1 className="font-serif text-4xl sm:text-6xl text-[#0B1B3D] leading-tight tracking-wide mb-6">
               {service.title}
             </h1>
-            <p className="font-sans text-md text-[#555555] leading-relaxed max-w-2xl">
+            <p className="font-sans text-md text-[#475569] leading-relaxed max-w-2xl">
               {service.longDesc || service.description}
             </p>
           </div>
           <div className="lg:col-span-4 flex justify-start lg:justify-end mt-4 lg:mt-0">
             <Link
               href="/contact"
-              className="flex items-center gap-3 px-8 py-4 bg-[#A67C52] text-white text-[11px] uppercase tracking-widest font-sans rounded transition-all duration-300 hover:bg-[#A67C52]/90 shadow-lg"
+              className="flex items-center gap-3 px-8 py-4 bg-[#D4AF37] text-white text-[11px] uppercase tracking-widest font-sans rounded transition-all duration-300 hover:bg-[#D4AF37]/90 shadow-lg"
             >
               Book Design Brief
               <ArrowRight className="w-4 h-4" />
@@ -175,7 +175,7 @@ export default async function ServiceDetailsPage({
         </div>
 
         {/* Large Cover Image */}
-        <div className="relative aspect-[21/9] w-full overflow-hidden rounded-lg border border-[#ECE8E2] mb-20 shadow-sm">
+        <div className="relative aspect-[21/9] w-full overflow-hidden rounded-lg border border-[#E2E8F0] mb-20 shadow-sm">
           <Image
             src={service.coverImage}
             alt={service.title}
@@ -189,13 +189,13 @@ export default async function ServiceDetailsPage({
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 mb-28">
           {/* Features Column */}
           <div className="lg:col-span-5">
-            <h3 className="font-serif text-2xl text-[#111111] mb-8 border-b border-[#ECE8E2] pb-4">
+            <h3 className="font-serif text-2xl text-[#0B1B3D] mb-8 border-b border-[#E2E8F0] pb-4">
               Atelier Standards
             </h3>
             <ul className="flex flex-col gap-4">
               {(service.features || []).map((feat: string, i: number) => (
-                <li key={i} className="flex items-start gap-3 text-sm text-[#555555] leading-relaxed">
-                  <CheckCircle className="w-5 h-5 text-[#A67C52] shrink-0 mt-0.5" />
+                <li key={i} className="flex items-start gap-3 text-sm text-[#475569] leading-relaxed">
+                  <CheckCircle className="w-5 h-5 text-[#D4AF37] shrink-0 mt-0.5" />
                   <span>{feat}</span>
                 </li>
               ))}
@@ -204,18 +204,18 @@ export default async function ServiceDetailsPage({
 
           {/* Process Timeline Column */}
           <div className="lg:col-span-7">
-            <h3 className="font-serif text-2xl text-[#111111] mb-8 border-b border-[#ECE8E2] pb-4">
+            <h3 className="font-serif text-2xl text-[#0B1B3D] mb-8 border-b border-[#E2E8F0] pb-4">
               Our Turnkey Process
             </h3>
             <div className="flex flex-col gap-8">
               {(service.process || []).map((step: any, idx: number) => (
                 <div key={idx} className="flex gap-6 items-start">
-                  <span className="font-serif text-xl text-[#A67C52] bg-[#ECE8E2] w-12 h-12 rounded-full flex items-center justify-center shrink-0">
+                  <span className="font-serif text-xl text-[#D4AF37] bg-[#E2E8F0] w-12 h-12 rounded-full flex items-center justify-center shrink-0">
                     {step.step}
                   </span>
                   <div>
-                    <h4 className="font-serif text-lg text-[#111111] mb-2">{step.title}</h4>
-                    <p className="font-sans text-xs text-[#555555] leading-relaxed">{step.desc}</p>
+                    <h4 className="font-serif text-lg text-[#0B1B3D] mb-2">{step.title}</h4>
+                    <p className="font-sans text-xs text-[#475569] leading-relaxed">{step.desc}</p>
                   </div>
                 </div>
               ))}

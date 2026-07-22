@@ -74,16 +74,16 @@ export default function AdminBlogsPage() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-6">
         <div>
-          <h1 className="font-serif text-3xl md:text-4xl text-[#111111] mb-2">
+          <h1 className="font-serif text-3xl md:text-4xl text-[#0B1B3D] mb-2">
             Journal Articles
           </h1>
-          <p className="font-sans text-xs text-[#555555]">
+          <p className="font-sans text-xs text-[#475569]">
             Configure and publish editorial articles documenting materials, trends, and project updates.
           </p>
         </div>
         <button
           onClick={handleAddMock}
-          className="flex items-center gap-2 px-6 py-3 bg-[#A67C52] text-white hover:bg-[#A67C52]/90 transition-colors font-sans text-[10px] font-bold uppercase tracking-widest rounded shadow-sm w-max"
+          className="flex items-center gap-2 px-6 py-3 bg-[#D4AF37] text-white hover:bg-[#D4AF37]/90 transition-colors font-sans text-[10px] font-bold uppercase tracking-widest rounded shadow-sm w-max"
         >
           <Plus className="w-4 h-4" />
           Publish Mock Journal
@@ -91,43 +91,43 @@ export default function AdminBlogsPage() {
       </div>
 
       {statusMsg && (
-        <div className="bg-[#A67C52]/10 border border-[#A67C52]/20 p-4 rounded text-xs text-[#111111] font-sans tracking-wide">
+        <div className="bg-[#D4AF37]/10 border border-[#D4AF37]/20 p-4 rounded text-xs text-[#0B1B3D] font-sans tracking-wide">
           {statusMsg}
         </div>
       )}
 
       {/* Blogs list */}
-      <div className="bg-white rounded-lg border border-[#ECE8E2] shadow-sm overflow-hidden">
+      <div className="bg-white rounded-lg border border-[#E2E8F0] shadow-sm overflow-hidden">
         {loading ? (
-          <div className="p-8 text-center font-sans text-xs text-[#555555]/60 uppercase tracking-widest">
+          <div className="p-8 text-center font-sans text-xs text-[#475569]/60 uppercase tracking-widest">
             Loading journal catalog...
           </div>
         ) : blogs.length === 0 ? (
           <div className="p-12 text-center flex flex-col items-center gap-4">
-            <BookOpen className="w-12 h-12 text-[#A67C52]/40" />
-            <p className="font-sans text-xs text-[#555555]/50">No articles found. Publish your first editorial.</p>
+            <BookOpen className="w-12 h-12 text-[#D4AF37]/40" />
+            <p className="font-sans text-xs text-[#475569]/50">No articles found. Publish your first editorial.</p>
           </div>
         ) : (
           <table className="w-full text-left border-collapse">
             <thead>
-              <tr className="bg-[#F8F7F4] border-b border-[#ECE8E2] font-sans text-[9px] text-[#555555] uppercase tracking-widest">
+              <tr className="bg-[#F0F4F8] border-b border-[#E2E8F0] font-sans text-[9px] text-[#475569] uppercase tracking-widest">
                 <th className="p-4 pl-6">Journal Title</th>
                 <th className="p-4">Category</th>
                 <th className="p-4">Date</th>
                 <th className="p-4 pr-6 text-right">Actions</th>
               </tr>
             </thead>
-            <tbody className="font-sans text-xs text-[#555555] divide-y divide-[#ECE8E2]/60">
+            <tbody className="font-sans text-xs text-[#475569] divide-y divide-[#E2E8F0]/60">
               {blogs.map((b) => (
-                <tr key={b.id} className="hover:bg-[#F8F7F4]/40">
-                  <td className="p-4 pl-6 font-medium text-[#111111]">{b.title}</td>
+                <tr key={b.id} className="hover:bg-[#F0F4F8]/40">
+                  <td className="p-4 pl-6 font-medium text-[#0B1B3D]">{b.title}</td>
                   <td className="p-4">{b.category}</td>
                   <td className="p-4">{formatDate(b.createdAt)}</td>
                   <td className="p-4 pr-6 text-right flex items-center justify-end gap-3 h-full pt-5">
                     <Link
                       href={`/blog/${b.slug}`}
                       target="_blank"
-                      className="p-1.5 text-[#A67C52] hover:bg-[#ECE8E2] rounded transition-colors"
+                      className="p-1.5 text-[#D4AF37] hover:bg-[#E2E8F0] rounded transition-colors"
                       title="View public page"
                     >
                       <ExternalLink className="w-4 h-4" />

@@ -61,33 +61,33 @@ export default function GalleryPage() {
       : mockGallery.filter((item) => item.category === filter);
 
   return (
-    <div className="bg-[#F8F7F4] pt-32 pb-24 md:pt-40 md:pb-32">
+    <div className="bg-[#F0F4F8] pt-32 pb-24 md:pt-40 md:pb-32">
       <div className="max-w-7xl mx-auto px-6 md:px-12">
         {/* Header */}
         <div className="mb-16">
-          <span className="font-sans text-[10px] text-[#A67C52] tracking-[0.4em] uppercase mb-4 block">
+          <span className="font-sans text-[10px] text-[#D4AF37] tracking-[0.4em] uppercase mb-4 block">
             Visual Atelier
           </span>
-          <MaskReveal className="font-serif text-4xl sm:text-6xl text-[#111111] leading-tight tracking-wide mb-8 max-w-3xl">
+          <MaskReveal className="font-serif text-4xl sm:text-6xl text-[#0B1B3D] leading-tight tracking-wide mb-8 max-w-3xl">
             Material & Design Details.
           </MaskReveal>
         </div>
 
         {/* Tab Filters */}
-        <div className="flex flex-wrap items-center gap-6 border-b border-[#ECE8E2] pb-4 mb-12 font-sans text-xs">
+        <div className="flex flex-wrap items-center gap-6 border-b border-[#E2E8F0] pb-4 mb-12 font-sans text-xs">
           {categories.map((cat) => (
             <button
               key={cat}
               onClick={() => setFilter(cat)}
               className={`relative pb-2 uppercase tracking-widest transition-colors font-medium text-[10px] ${
-                filter === cat ? "text-[#A67C52]" : "text-[#555555] hover:text-[#111111]"
+                filter === cat ? "text-[#D4AF37]" : "text-[#475569] hover:text-[#0B1B3D]"
               }`}
             >
               {cat}
               {filter === cat && (
                 <motion.span
                   layoutId="galleryFilterUnderline"
-                  className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#A67C52]"
+                  className="absolute bottom-0 left-0 right-0 h-[1px] bg-[#D4AF37]"
                   transition={{ type: "spring", stiffness: 380, damping: 30 }}
                 />
               )}
@@ -109,7 +109,7 @@ export default function GalleryPage() {
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.95 }}
                 transition={{ duration: 0.4 }}
-                className="break-inside-avoid relative group overflow-hidden rounded-lg border border-[#ECE8E2] bg-[#F8F7F4] shadow-sm hover:shadow-lg transition-all duration-300"
+                className="break-inside-avoid relative group overflow-hidden rounded-lg border border-[#E2E8F0] bg-[#F0F4F8] shadow-sm hover:shadow-lg transition-all duration-300"
               >
                 <div className="relative w-full aspect-auto min-h-[250px] overflow-hidden cursor-zoom-in" data-cursor-text="Zoom">
                   <img
@@ -120,7 +120,7 @@ export default function GalleryPage() {
                   {/* Hover Overlay */}
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-6">
                     <div>
-                      <span className="text-[8px] text-[#A67C52] tracking-widest uppercase font-sans block mb-1">
+                      <span className="text-[8px] text-[#D4AF37] tracking-widest uppercase font-sans block mb-1">
                         {item.category}
                       </span>
                       <h4 className="text-white font-serif text-sm tracking-wide">

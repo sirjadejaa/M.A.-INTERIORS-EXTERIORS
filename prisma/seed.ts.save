@@ -4,16 +4,15 @@ import bcrypt from "bcryptjs";
 const prisma = new PrismaClient();
 
 async function main() {
-  console.log("Seeding database (PostgreSQL)...");
+  console.log("Seeding database (SQLite)...");
 
   // 1. Create admin user
   const adminPassword = bcrypt.hashSync("admin123", 10);
   const admin = await prisma.user.upsert({
-    where: { email: "admin@turkinteriors.in" },
+    where: { email: "admin@mainteriors.in" },
     update: {},
-    create: {
-      email: "admin@turkinteriors.in",
-      name: "Turk Admin",
+    create: {      email: "admin@mainteriors.in",
+      name: "M.A. Admin",
       password: adminPassword,
       role: "ADMIN",
     },
@@ -103,7 +102,7 @@ async function main() {
   // 3. Create projects
   const projects = [
     {
-      title: "Luxury Apartment – Baner",
+      title: "The Royal Horizon Villa",
       description: "A breathtaking residential villa overlooking the Arabian Sea, featuring handcrafted furniture and dynamic lighting systems.",
       longDesc: "The Royal Horizon Villa is a testament to pure bespoke luxury. Built over an expansive 7,500 square feet in Mumbai's coastal stretch, this multi-generation home is designed to blur the boundaries between indoor comfort and outdoor vistas. Every piece of furniture was custom engineered at our proprietary workshop, using ethically sourced Italian oak, brushed gold brass details, and hand-woven silk fabrics. Architectural lighting runs on a smart DALI automation framework, shifting tone from cool morning daylight to warm twilight gold.",
       category: "Residential",
@@ -113,18 +112,18 @@ async function main() {
         "https://images.unsplash.com/photo-1600596542815-ffad4c1539a9?q=80&w=600",
         "https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?q=80&w=600",
       ]),
-      location: "Baner, Pune",
+      location: "Bandra West, Mumbai",
       client: "Dr. Aditya Singhania",
       area: "7,500 sq ft",
       materials: JSON.stringify(["Calacatta Gold Marble", "Brushed Brass Details", "Custom Walnut Millwork"]),
       duration: "8 Months",
-      testimonial: "Turk Interiors transformed our dream of a sanctuary into a living reality. The attention to detail is spectacular, matching anything I've seen globally.",
+      testimonial: "M.A. Interiors transformed our dream of a sanctuary into a living reality. The attention to detail is spectacular, matching anything I've seen globally.",
       clientName: "Dr. Aditya Singhania",
       clientRole: "Senior Cardiologist",
       isFeatured: true,
     },
     {
-      title: "Corporate Office – Hinjewadi",
+      title: "Prestige Commercial Hub",
       description: "An upscale corporate headquarters designed for collaborative workflow and premium brand presentation.",
       longDesc: "Commissioned by a leading real estate conglomerate, the Prestige Commercial Hub is a 12,000 square foot modern office setup. The core design principles centered around transparency, sound attenuation, and micro-climate control. Using double-glazed acoustic glass partitions and custom acoustic felt ceiling panels, we achieved noise reduction index ratings suitable for private boardrooms. Elements of nature are woven throughout via automated green living walls and indoor water features.",
       category: "Commercial",
@@ -133,18 +132,18 @@ async function main() {
         "https://images.unsplash.com/photo-1497366216548-37526070297c?q=80&w=600",
         "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=600",
       ]),
-      location: "Hinjewadi, Pune",
+      location: "Bandra Kurla Complex, Mumbai",
       client: "Prestige Group India",
       area: "12,000 sq ft",
       materials: JSON.stringify(["Acoustic Felt Cladding", "Terrazzo Flooring", "Anodized Aluminum"]),
       duration: "10 Months",
-      testimonial: "Turk Interiors designed a state-of-the-art office that reflects our brand's forward-looking philosophy. Outstanding spatial management.",
+      testimonial: "M.A. Interiors designed a state-of-the-art office that reflects our brand's forward-looking philosophy. Outstanding spatial management.",
       clientName: "Rajesh Malhotra",
       clientRole: "Managing Director",
       isFeatured: true,
     },
     {
-      title: "Modern Villa – Wakad",
+      title: "Minimalist Loft Penthouse",
       description: "A calm, neutral-toned penthouse featuring floating stairs and seamless cementitious finishes.",
       longDesc: "Located in the heart of Mumbai, this penthouse layout embraces warm minimalism. Spacial volumes are optimized by utilizing floating concrete slabs for the central staircase and micro-cement coatings for floors and bathrooms. Storage is entirely integrated into flush wall panels to maintain clean, uninterrupted architectural lines.",
       category: "Residential",
@@ -152,12 +151,12 @@ async function main() {
       images: JSON.stringify([
         "https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?q=80&w=600",
       ]),
-      location: "Wakad, Pune",
+      location: "Mira Road East, Maharashtra",
       client: "Meera & Rohan Joshi",
       area: "3,200 sq ft",
       materials: JSON.stringify(["Micro-cement Finish", "Smoked Oak Wood", "Linen Wallcoverings"]),
       duration: "5 Months",
-      testimonial: "We wanted a home that feels like a resort. Turk Interiors delivered exactly that—a peaceful, clutter-free sanctuary.",
+      testimonial: "We wanted a home that feels like a resort. M.A. Interiors delivered exactly that—a peaceful, clutter-free sanctuary.",
       clientName: "Meera Joshi",
       clientRole: "Fashion Designer",
       isFeatured: false,
@@ -178,7 +177,7 @@ async function main() {
       role: "Homeowners",
       company: "The Crest Residences",
       rating: 5,
-      review: "Working with Turk Interiors was a seamless experience. From the initial 3D plans to the final delivery, their professionalism and eye for luxury finishes was unmatched. They transformed our standard apartment into an architectural magazine masterwork.",
+      review: "Working with M.A. Interiors & Exteriors was a seamless experience. From the initial 3D plans to the final delivery, their professionalism and eye for luxury finishes was unmatched. They transformed our standard apartment into an architectural magazine masterwork.",
     },
     {
       name: "Vikram Singhal",
@@ -230,7 +229,7 @@ async function main() {
     {
       name: "M.A. Qureshi",
       role: "Founder & Creative Director",
-      bio: "With over 18 years of design experience across luxury residential and commercial properties, Qureshi leads the design direction and material engineering standards at Turk Interiors.",
+      bio: "With over 18 years of design experience across luxury residential and commercial properties, Qureshi leads the design direction and material engineering standards at M.A. Interiors & Exteriors.",
       image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=400",
       order: 1,
     },
